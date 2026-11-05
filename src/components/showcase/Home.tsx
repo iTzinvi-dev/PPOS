@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '../general';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 export interface HomeProps {}
 

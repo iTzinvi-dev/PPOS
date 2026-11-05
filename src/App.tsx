@@ -1,10 +1,13 @@
 import './App.css';
 import Desktop from './components/os/Desktop';
+import ErrorBoundary from './components/os/ErrorBoundary';
 
 function App() {
     return (
         <div className="App">
-            <Desktop />
+            <ErrorBoundary>
+                <Desktop />
+            </ErrorBoundary>
         </div>
     );
 }

@@ -113,7 +113,7 @@ const Credits: React.FC<CreditsProps> = (props) => {
                 <br />
                 <div style={styles.nextSlideTimer}>
                     {/* make a time number of dots */}
-                    {Array.from(Array(time)).map((i) => {
+                    {Array.from(Array(time)).map((_, i) => {
                         return (
                             <div key={i}>
                                 <p>.</p>

@@ -11,6 +11,7 @@ import DesktopShortcut, { DesktopShortcutProps } from './DesktopShortcut';
 import Scrabble from '../applications/Scrabble';
 import { IconName } from '../../assets/icons';
 import Credits from '../applications/Credits';
+import ErrorBoundary from './ErrorBoundary';
 
 export interface DesktopProps {}
 
@@ -216,11 +217,13 @@ const Desktop: React.FC<DesktopProps> = (props) => {
                             windows[key].minimized && styles.minimized
                         )}
                     >
-                        {React.cloneElement(element, {
-                            key,
-                            onInteract: () => onWindowInteract(key),
-                            onClose: () => removeWindow(key),
-                        })}
+                        <ErrorBoundary>
+                            {React.cloneElement(element, {
+                                key,
+                                onInteract: () => onWindowInteract(key),
+                                onClose: () => removeWindow(key),
+                            })}
+                        </ErrorBoundary>
                     </div>
                 );
             })}

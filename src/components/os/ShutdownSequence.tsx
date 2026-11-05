@@ -175,6 +175,10 @@ const ShutdownSequence: React.FC<ShutdownSequenceProps> = ({
         if (refOverride) {
             text = refOverride.current;
         }
+        if (!text) {
+            callback();
+            return;
+        }
         let delayExtra = 0;
         if (i < text.length) {
             if (text[i] === '|') {
@@ -229,7 +233,10 @@ const ShutdownSequence: React.FC<ShutdownSequenceProps> = ({
         delay(2000).then(() => {
             setLoading(false);
             delay(1000).then(() => {
-                const shutdown = SHUTDOWN_MAP[numShutdowns];
+                const shutdown =
+                    numShutdowns < SHUTDOWN_MAP.length
+                        ? SHUTDOWN_MAP[numShutdowns]
+                        : NORMAL_SHUTDOWN;
                 if (numShutdowns === 9) {
                     delay(10000).then(() => {
                         setLoading(true);

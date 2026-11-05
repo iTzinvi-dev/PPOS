@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { DosPlayer as Instance, DosPlayerFactoryType } from 'js-dos';
 
 declare const Dos: DosPlayerFactoryType;
+declare const emulators: any;
 
 interface PlayerProps {
     width: number;
@@ -20,6 +21,11 @@ export default function DosPlayer(props: PlayerProps) {
             return;
         }
 
+        if (typeof Dos !== 'function' || typeof emulators === 'undefined') {
+            console.warn('Dos or emulators is not available.');
+            return;
+        }
+
         const root = rootRef.current as HTMLDivElement;
         const instance = Dos(root);
 
@@ -31,7 +37,9 @@ export default function DosPlayer(props: PlayerProps) {
         }
 
         return () => {
-            instance.stop();
+            if (instance && typeof instance.stop === 'function') {
+                instance.stop();
+            }
         };
     }, [rootRef]);
 

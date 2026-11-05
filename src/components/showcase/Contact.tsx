@@ -71,14 +71,13 @@ const Contact: React.FC<ContactProps> = (props) => {
                     }),
                 }
             );
-            // the response will be either {success: true} or {success: false, error: message}
-            const data = (await res.json()) as
-                | {
-                      success: false;
-                      error: string;
-                  }
-                | { success: true };
-            if (data.success) {
+            // the response will be either {success: true} or {success: false, error: message} or {message: 'success'}
+            const data = (await res.json()) as {
+                success?: boolean;
+                error?: string;
+                message?: string;
+            };
+            if (data.success || data.message === 'success') {
                 setFormMessage(`Message successfully sent. Thank you ${name}!`);
                 setCompany('');
                 setEmail('');
@@ -87,7 +86,7 @@ const Contact: React.FC<ContactProps> = (props) => {
                 setFormMessageColor(colors.blue);
                 setIsLoading(false);
             } else {
-                setFormMessage(data.error);
+                setFormMessage(data.error || 'Failed to send message.');
                 setFormMessageColor(colors.red);
                 setIsLoading(false);
             }
