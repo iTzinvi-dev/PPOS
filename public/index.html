@@ -26,23 +26,74 @@
     -->
   <title>iTzinvi - OS</title>
   <script>
-    window.onload = () => {
-      addEventListener('mousemove', (event) => {
-        window.parent.postMessage({ clientX: event.clientX, clientY: event.clientY, type: 'mousemove' }, '*');
+    (function() {
+      function sendToParent(data) {
+        try {
+          if (window.parent && window.parent !== window) {
+            window.parent.postMessage(data, '*');
+          }
+        } catch (err) {}
+      }
+
+      function isOsMounted() {
+        var root = document.getElementById('root');
+        return !!(root && root.children && root.children.length > 0);
+      }
+
+      function notifyReadyIfMounted() {
+        if (isOsMounted()) {
+          sendToParent({ type: 'os-ready' });
+        }
+      }
+
+      function setupEventForwarding() {
+        window.addEventListener('mousemove', function(event) {
+          sendToParent({ clientX: event.clientX, clientY: event.clientY, type: 'mousemove' });
+        }, { passive: true });
+
+        window.addEventListener('mouseenter', function() {
+          sendToParent({ type: 'mouseenter' });
+        });
+
+        window.addEventListener('mouseleave', function() {
+          sendToParent({ type: 'mouseleave' });
+        });
+
+        window.addEventListener('mousedown', function() {
+          sendToParent({ type: 'mousedown' });
+        });
+
+        window.addEventListener('mouseup', function() {
+          sendToParent({ type: 'mouseup' });
+        });
+
+        window.addEventListener('keydown', function(event) {
+          sendToParent({ type: 'keydown', key: event.key });
+        });
+
+        window.addEventListener('keyup', function(event) {
+          sendToParent({ type: 'keyup', key: event.key });
+        });
+
+        notifyReadyIfMounted();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupEventForwarding);
+      } else {
+        setupEventForwarding();
+      }
+
+      window.addEventListener('load', function() {
+        notifyReadyIfMounted();
       });
-      addEventListener('mousedown', (event) => {
-        window.parent.postMessage({ type: 'mousedown' }, '*');
+
+      window.addEventListener('message', function(event) {
+        if (event.data && event.data.type === 'host-ping') {
+          notifyReadyIfMounted();
+        }
       });
-      addEventListener('mouseup', (event) => {
-        window.parent.postMessage({ type: 'mouseup' }, '*');
-      });
-      addEventListener('keydown', (event) => {
-        window.parent.postMessage({ type: 'keydown', key: event.key }, '*');
-      });
-      addEventListener('keyup', (event) => {
-        window.parent.postMessage({ type: 'keyup', key: event.key }, '*');
-      });
-    };
+    })();
   </script>
   <script src="%PUBLIC_URL%/js-dos/js-dos.js"></script>
   <link rel="stylesheet" href="%PUBLIC_URL%/js-dos/js-dos.css">

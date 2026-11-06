@@ -1,6 +1,5 @@
 import React from 'react';
-import inviWorkspace from '../../assets/pictures/invi_workspace.svg';
-import inviAvatar from '../../assets/pictures/invi_avatar.svg';
+import inviAvatar from '../../assets/pictures/invi_avatar.jpg';
 import { Link } from 'react-router-dom';
 import ResumeDownload from './ResumeDownload';
 
@@ -38,15 +37,6 @@ const About: React.FC<AboutProps> = (props) => {
                     In a rapidly evolving digital landscape, repetitive processes require intelligent automation, 
                     software demands rigorous architecture, and security must be woven into every layer rather than treated as an afterthought.
                 </p>
-                <br />
-                <div className="captioned-image">
-                    <img src={inviWorkspace} style={styles.image} alt="Workspace & Terminal" />
-                    <p>
-                        <sub>
-                            <b>Figure 1:</b> System environment &amp; core operational profile.
-                        </sub>
-                    </p>
-                </div>
 
                 <h4>1. Automation Engineering</h4>
                 <p>
@@ -141,6 +131,7 @@ const styles: StyleSheetCSS = {
         width: 200,
         height: 200,
         borderRadius: 8,
+        objectFit: 'cover',
     },
     verticalImage: {
         alignSelf: 'center',

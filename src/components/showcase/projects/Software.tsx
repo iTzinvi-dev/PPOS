@@ -1,6 +1,8 @@
 import React from 'react';
 // @ts-ignore
 import computer from '../../../assets/pictures/projects/software/computer.mp4';
+import pryzmiumBanner from '../../../assets/pictures/projects/software/pryzmium_banner.svg';
+import surgicalSkillsSvg from '../../../assets/pictures/projects/software/surgical_ai_skills.svg';
 import ResumeDownload from '../ResumeDownload';
 import VideoAsset from '../../general/VideoAsset';
 
@@ -54,6 +56,90 @@ const SoftwareProjects: React.FC<SoftwareProjectsProps> = (props) => {
                         </a>
                     </li>
                 </ul>
+            </div>
+
+            {/* Featured Project: Pryzmium */}
+            <div className="retro-project-card">
+                <div className="retro-project-header">
+                    <h2 className="retro-project-title">Pryzmium — Autonomous AI Workspace</h2>
+                    <span className="retro-tag" style={{ background: '#7c2d12', color: '#ffedd5' }}>FEATURED SYSTEM</span>
+                </div>
+                <p>
+                    <b>Category:</b> Autonomous AI Workspace &amp; Governance Gateway<br />
+                    <b>Core Architecture:</b> React 19, TypeScript, Express, Firebase Auth &amp; Firestore, Multi-Gateway Inference
+                </p>
+                <div className="retro-tag-container">
+                    <span className="retro-tag">MULTI-GATEWAY ROUTING</span>
+                    <span className="retro-tag">AES-256-GCM VAULT</span>
+                    <span className="retro-tag">HUMAN-IN-THE-LOOP</span>
+                    <span className="retro-tag">GOOGLE WORKSPACE API</span>
+                    <span className="retro-tag">RATE-CAP TELEMETRY</span>
+                </div>
+                <div className="retro-image-wrapper">
+                    <img src={pryzmiumBanner} alt="Pryzmium Multi-Model AI Agent Workspace" />
+                </div>
+                <p style={{ marginTop: 8 }}>
+                    <b>Pryzmium</b> is an enterprise-grade autonomous AI workspace engineered for high-reliability reasoning, 
+                    real-world tool execution, and cryptographic security governance. Instead of locking workflows into a single LLM vendor 
+                    or exposing sensitive API tokens client-side, Pryzmium routes tasks across <b>8 specialized inference gateways</b> (Alpha, Beta, Gama, Delta) 
+                    with deterministic failover upon upstream 429/50x events.
+                </p>
+                <br />
+                <p>
+                    Integrated with real-world tool execution pipelines including <b>Google Docs</b> creation, <b>Gmail</b> drafting &amp; dispatch, 
+                    <b>Google Calendar</b> ISO-8601 event scheduling, <b>Google Tasks</b> orchestration, and live web search. 
+                    Sensitive operations require explicit confirmation gates (Human-in-the-Loop) paired with a verifiable immutable audit trail.
+                </p>
+                <br />
+                <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href="https://github.com/iTzinvi-dev/Pryzmium"
+                    className="retro-action-btn"
+                >
+                    <span>⚡ [View Pryzmium Repository on GitHub]</span>
+                </a>
+            </div>
+
+            {/* Featured Project: Surgical AI Skills */}
+            <div className="retro-project-card">
+                <div className="retro-project-header">
+                    <h2 className="retro-project-title">Surgical AI Skills — Agent Guardrails &amp; CLI</h2>
+                    <span className="retro-tag" style={{ background: '#064e3b', color: '#a7f3d0' }}>PRODUCTION PROTOCOL</span>
+                </div>
+                <p>
+                    <b>Category:</b> Deterministic Agent Guardrails &amp; Developer Tooling<br />
+                    <b>Supported Agents:</b> Claude Code, Cursor IDE, Windsurf, GitHub Copilot, OpenClaw, Kimi Code
+                </p>
+                <div className="retro-tag-container">
+                    <span className="retro-tag">ROOT-CAUSE DEBUGGING</span>
+                    <span className="retro-tag">BLAST-RADIUS VERIFIER</span>
+                    <span className="retro-tag">ANTI-BANDAID LINTER</span>
+                    <span className="retro-tag">2-STRIKE AUTO-ROLLBACK</span>
+                    <span className="retro-tag">GIT DIFF CEILING</span>
+                </div>
+                <div className="retro-image-wrapper">
+                    <img src={surgicalSkillsSvg} alt="Surgical AI Skills Technical Specification" />
+                </div>
+                <p style={{ marginTop: 8 }}>
+                    <b>Surgical AI Skills</b> is an engineering guardrail protocol and automated bash CLI suite that eliminates 
+                    the agentic "death spiral" by forcing coding agents to fix root causes rather than applying blind symptom-masking band-aids.
+                </p>
+                <br />
+                <p>
+                    Enforces a 5-step pre-edit trace checklist, AST/grep caller blast-radius verification before function modification, 
+                    automated <code>bandaid-lint</code> git diff analysis (blocking blind optional chaining and swallowed exceptions), 
+                    and a strict <b>2-Strike Auto-Rollback rule</b> with clean git stash snapshotting.
+                </p>
+                <br />
+                <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href="https://github.com/iTzinvi-dev/Surgical-AI-Skills"
+                    className="retro-action-btn"
+                >
+                    <span>🛡️ [View Surgical AI Skills on GitHub]</span>
+                </a>
             </div>
 
             {/* Placeholder Project 1: Automation */}

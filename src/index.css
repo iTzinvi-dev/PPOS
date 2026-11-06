@@ -400,3 +400,130 @@ input:active {
     cursor: pointer;
     color: white;
 }
+
+/* Interactive Retro OS Project Showcase Cards */
+.retro-project-card {
+    background: var(--surface);
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.retro-project-card:hover {
+    background-color: var(--surface-hover);
+    transform: translateY(-3px);
+    box-shadow: inset -1px -1px var(--window-frame),
+        inset 1px 1px var(--button-highlight),
+        0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+.retro-project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--button-shadow);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.retro-project-title {
+    font-family: MillenniumBold, 'Times New Roman', Times, serif;
+    font-size: 26px;
+    margin: 0;
+    color: #111;
+}
+
+.retro-tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+.retro-tag {
+    font-family: Terminal, 'Courier New', monospace;
+    font-size: 13px;
+    padding: 3px 8px;
+    background: #1d2e2f;
+    color: #55ffff;
+    box-shadow: var(--border-field);
+    display: inline-block;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.retro-tag:hover {
+    background: #000080;
+    color: #ffff55;
+    transform: scale(1.05);
+}
+
+.retro-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 14px 0;
+    box-shadow: var(--border-field);
+    background: #0d1117;
+    cursor: pointer;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.retro-image-wrapper:hover {
+    background-color: #161b22;
+    box-shadow: inset -2px -2px var(--button-highlight),
+        inset 2px 2px var(--window-frame);
+}
+
+.retro-image-wrapper img {
+    width: 100%;
+    height: auto;
+    max-height: 340px;
+    object-fit: contain;
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), filter 0.3s ease;
+    display: block;
+}
+
+.retro-image-wrapper:hover img {
+    transform: scale(1.025);
+    filter: brightness(1.06) contrast(1.04);
+}
+
+.retro-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: MillenniumBold, sans-serif;
+    font-size: 16px;
+    padding: 6px 14px;
+    background: var(--surface-hover);
+    box-shadow: var(--border-raised-outer), var(--border-raised-inner);
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+.retro-action-btn:hover {
+    background: var(--surface);
+    color: #000080;
+    transform: translateY(-1px);
+}
+
+.retro-action-btn:active {
+    box-shadow: var(--border-raised-inner), var(--border-raised-outer);
+    transform: translateY(1px);
+    background: var(--button-shadow);
+    color: #fff;
+}
